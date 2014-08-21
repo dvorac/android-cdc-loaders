@@ -36,12 +36,12 @@ public class MainActivity extends Activity {
                 break;
             case R.id.action_cached:
                 getFragmentManager().beginTransaction()
-                        .replace(R.id.container, null)
+                        .replace(R.id.container, new CachedLoaderFragment())
                         .commit();
                 break;
             case R.id.action_autorefresh:
                 getFragmentManager().beginTransaction()
-                        .replace(R.id.container, null)
+                        .replace(R.id.container, new AutoRefreshLoaderFragment())
                         .commit();
                 break;
             default:

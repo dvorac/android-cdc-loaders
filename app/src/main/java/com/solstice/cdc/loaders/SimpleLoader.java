@@ -3,20 +3,14 @@ package com.solstice.cdc.loaders;
 import android.content.AsyncTaskLoader;
 import android.content.Context;
 
-/**
- * Created by dustinvorac on 8/16/14.
- */
-public class SimpleLoader<D> extends AsyncTaskLoader<D> {
+public class SimpleLoader<T> extends AsyncTaskLoader<T> {
 
     public SimpleLoader(Context context) {
         super(context);
     }
 
     @Override
-    public D loadInBackground() {
-        /**
-         * Load your data here.
-         */
+    public T loadInBackground() {
         return null;
     }
 
