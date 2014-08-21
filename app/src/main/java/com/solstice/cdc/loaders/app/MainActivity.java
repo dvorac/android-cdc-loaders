@@ -45,7 +45,7 @@ public class MainActivity extends Activity {
                         .commit();
                 break;
             default:
-                return super.onOptionsItemSelected(item);
+                return false;
         }
 
         return true;

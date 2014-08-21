@@ -24,6 +24,8 @@ public class SimpleLoaderFragment extends ListFragment
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        setHasOptionsMenu(true);
+
         getLoaderManager().initLoader(0, null, this);
     }
 
@@ -37,7 +39,7 @@ public class SimpleLoaderFragment extends ListFragment
                 getLoaderManager().restartLoader(0, null, this);
                 break;
             default:
-                return super.onOptionsItemSelected(item);
+                return false;
         }
         return true;
     }

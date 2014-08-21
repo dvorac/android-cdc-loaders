@@ -22,6 +22,8 @@ public class AutoRefreshLoaderFragment extends ListFragment
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        setHasOptionsMenu(true);
+
         getLoaderManager().initLoader(0, null, this);
     }
 
@@ -35,7 +37,7 @@ public class AutoRefreshLoaderFragment extends ListFragment
                 // TODO : refresh
                 break;
             default:
-                return super.onOptionsItemSelected(item);
+                return false;
         }
         return true;
     }
