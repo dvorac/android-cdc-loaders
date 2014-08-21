@@ -5,5 +5,7 @@
     <string name="action_simple">Simple</string>
     <string name="action_cached">Cached</string>
     <string name="action_autorefresh">Auto-refresh</string>
+    <string name="action_add">Add</string>
+    <string name="action_refresh">Refresh</string>
 
 </resources>

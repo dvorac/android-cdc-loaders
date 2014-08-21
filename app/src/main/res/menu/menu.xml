@@ -7,10 +7,20 @@
         android:showAsAction="never" />
     <item android:id="@+id/action_cached"
         android:title="@string/action_cached"
-        android:orderInCategory="100"
+        android:orderInCategory="101"
         android:showAsAction="never" />
     <item android:id="@+id/action_autorefresh"
         android:title="@string/action_autorefresh"
-        android:orderInCategory="100"
+        android:orderInCategory="102"
         android:showAsAction="never" />
+    <item android:id="@+id/action_plus"
+        android:title="@string/action_add"
+        android:orderInCategory="103"
+        android:showAsAction="always"
+        android:icon="@android:drawable/ic_input_add" />
+    <item android:id="@+id/action_refresh"
+        android:title="@string/action_refresh"
+        android:orderInCategory="104"
+        android:showAsAction="always"
+        android:icon="@android:drawable/ic_menu_rotate" />
 </menu>

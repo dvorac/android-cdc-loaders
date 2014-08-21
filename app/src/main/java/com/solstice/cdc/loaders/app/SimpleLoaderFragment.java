@@ -5,8 +5,10 @@ import android.app.LoaderManager;
 import android.content.Context;
 import android.content.Loader;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 
+import com.solstice.cdc.loaders.R;
 import com.solstice.cdc.loaders.SimpleLoader;
 
 import java.util.ArrayList;
@@ -16,11 +18,28 @@ import java.util.UUID;
 public class SimpleLoaderFragment extends ListFragment
         implements LoaderManager.LoaderCallbacks<List<UUID>> {
 
+    private static int NUM_ITEMS = 3;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         getLoaderManager().initLoader(0, null, this);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_plus:
+                NUM_ITEMS++;
+                break;
+            case R.id.action_refresh:
+                getLoaderManager().restartLoader(0, null, this);
+                break;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+        return true;
     }
 
     @Override
@@ -58,9 +77,9 @@ public class SimpleLoaderFragment extends ListFragment
             }
 
             List<UUID> list = new ArrayList<UUID>();
-            list.add(UUID.randomUUID());
-            list.add(UUID.randomUUID());
-            list.add(UUID.randomUUID());
+            for (int i = 0; i < NUM_ITEMS; i++) {
+                list.add(UUID.randomUUID());
+            }
             return list;
         }
     }

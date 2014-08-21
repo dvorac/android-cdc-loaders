@@ -5,9 +5,11 @@ import android.app.LoaderManager;
 import android.content.Context;
 import android.content.Loader;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 
 import com.solstice.cdc.loaders.AutoRefreshLoader;
+import com.solstice.cdc.loaders.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +23,21 @@ public class AutoRefreshLoaderFragment extends ListFragment
         super.onCreate(savedInstanceState);
 
         getLoaderManager().initLoader(0, null, this);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_plus:
+                // TODO : add
+                break;
+            case R.id.action_refresh:
+                // TODO : refresh
+                break;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+        return true;
     }
 
     @Override
