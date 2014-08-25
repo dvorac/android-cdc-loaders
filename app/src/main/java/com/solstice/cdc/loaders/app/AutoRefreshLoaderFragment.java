@@ -18,6 +18,8 @@ import java.util.UUID;
 public class AutoRefreshLoaderFragment extends ListFragment
     implements LoaderManager.LoaderCallbacks<List<UUID>> {
 
+    private static int NUM_ITEMS = 3;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,10 +33,12 @@ public class AutoRefreshLoaderFragment extends ListFragment
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_plus:
-                // TODO : add
+                NUM_ITEMS++;
+                getLoaderManager().getLoader(0).onContentChanged();
                 break;
             case R.id.action_refresh:
-                // TODO : refresh
+                NUM_ITEMS = 3;
+                getLoaderManager().restartLoader(0, null, this);
                 break;
             default:
                 return false;
@@ -44,7 +48,7 @@ public class AutoRefreshLoaderFragment extends ListFragment
 
     @Override
     public Loader<List<UUID>> onCreateLoader(int i, Bundle bundle) {
-        return new AutoRefreshUuidLoader(getActivity());
+        return new AutoRefreshUuidLoader(getActivity(), 1000*5);
     }
 
     @Override
@@ -64,23 +68,16 @@ public class AutoRefreshLoaderFragment extends ListFragment
 
     public static class AutoRefreshUuidLoader extends AutoRefreshLoader<List<UUID>> {
 
-        public AutoRefreshUuidLoader(Context context) {
-            super(context);
+        public AutoRefreshUuidLoader(Context context, long interval) {
+            super(context, interval);
         }
 
         @Override
         public List<UUID> loadInBackground() {
-
-            try {
-                Thread.sleep(3000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-
             List<UUID> list = new ArrayList<UUID>();
-            list.add(UUID.randomUUID());
-            list.add(UUID.randomUUID());
-            list.add(UUID.randomUUID());
+            for (int i = 0; i < NUM_ITEMS; i++) {
+                list.add(UUID.randomUUID());
+            }
             return list;
         }
     }
